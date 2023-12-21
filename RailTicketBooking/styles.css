@@ -1,0 +1,84 @@
+/* Основные стили */
+.body-font {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.heading {
+    font-size: 1.25rem; /* 20px */
+    font-weight: bold;
+    color: #333;
+}
+
+/* Стили контейнеров */
+.container {
+    width: 100%;
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование */
+    padding: 0 1rem; /* Поля внутри контейнера */
+}
+
+/* Стили кнопок */
+.button-primary {
+    background-color: #4a90e2; /* Синий */
+    color: white;
+    padding: 0.5rem 1rem; /* 8px 16px */
+    border-radius: 0.25rem; /* 4px */
+    border: none;
+    cursor: pointer;
+}
+
+.button-primary:hover {
+    background-color: #3e7ec4;
+}
+
+/* Стили таблиц */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 0.5rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+/* Формы */
+.form-label {
+    display: block;
+    margin-bottom: 0.25rem; /* 4px */
+    color: #333;
+}
+
+.form-input,
+.form-select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem; /* 4px */
+    margin-bottom: 1rem; /* 16px */
+}
+
+/* Модальные окна и всплывающие подсказки Bootstrap */
+.modal-header {
+    background-color: #f8f8f8;
+}
+
+.tooltip-inner {
+    background-color: #4a90e2; /* Синий */
+    color: white;
+}
+
+/* Центрирование содержимого */
+.centered {
+    text-align: center;
+}
+
+/* Дополнительные стили */
+/* ... */
