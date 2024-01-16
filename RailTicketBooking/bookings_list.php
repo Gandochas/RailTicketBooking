@@ -37,7 +37,7 @@ mysqli_close($link);
 </head>
 <body class="bg-gray-100">
 <div class="container mx-auto px-4 py-5">
-    <div class="max-w-4xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="max-w-4xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" x-data="bookingList()">
         <h1 class="text-xl mb-4">Список бронирований</h1>
 
         <table class="table-auto w-full mb-4">
