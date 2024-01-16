@@ -13,16 +13,6 @@ require 'db.php';
 $errorMsg = "";
 $successMsg = "";
 
-function getCoordinates($stationName, $apiKey) {
-    $url = "https://geocode-maps.yandex.ru/1.x/?format=json&apikey=" . $apiKey . "&geocode=" . urlencode($stationName);
-    $response = file_get_contents($url);
-    $data = json_decode($response, true);
-
-    // Извлекаем координаты
-    $coordinates = $data['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos'];
-    return explode(" ", $coordinates);
-}
-
 // Обработка формы
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $startStation = $_POST['startStation'];
@@ -35,14 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $seatCount = $_POST['seatCount'];
     $platskartCount = $_POST['platskartCount'];
     $coupeCount = $_POST['coupeCount'];
-
-
-    // API ключ Yandex Maps
-//    $apiKey = 'bcc3f0db-d708-4a49-83a8-bbadb927eb28';
-//
-//    // Получение координат
-//    list($startLongitude, $startLatitude) = getCoordinates($startStation, $apiKey);
-//    list($endLongitude, $endLatitude) = getCoordinates($endStation, $apiKey);
 
     // Сохранение маршрута в базе данных
     $stmt = mysqli_prepare($link, "INSERT INTO routes (StartStation, EndStation, StartLatitude, StartLongitude, EndLatitude, EndLongitude) VALUES (?, ?, ?, ?, ?, ?)");
@@ -80,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body class="bg-gray-100">
 <div class="container mx-auto px-4 py-5">
-    <div class="max-w-2xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="max-w-2xl mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" x-data="routeForm()">
         <h1 class="text-xl font-bold text-center mb-4">Добавление нового маршрута</h1>
 
         <template x-if="errorMsg">
@@ -200,7 +182,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     .then(data => {
                         if (data.success) {
                             this.successMsg = 'Маршрут успешно добавлен';
-                            // Очистка формы
                             this.startStation = '';
                             this.endStation = '';
                             this.startLatitude = '';
